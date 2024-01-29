@@ -111,6 +111,7 @@ function loadOrBuildManifest(
 }
 
 export async function main() {
+  core.debug(`Starting`);
   core.info(`Running release-please version: ${VERSION}`)
   const inputs = parseInputs();
   const github = await getGitHubInstance(inputs);
@@ -203,6 +204,7 @@ function outputPRs(prs: (PullRequest | undefined)[]) {
 
 if (require.main === module) {
   main().catch(err => {
+    core.debug(`Cause: ${err}`);
     core.setFailed(`release-please failed: ${err.message}; cause: ${err.cause}`)
   })
 }
