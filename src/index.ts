@@ -203,6 +203,6 @@ function outputPRs(prs: (PullRequest | undefined)[]) {
 
 if (require.main === module) {
   main().catch(err => {
-    core.setFailed(`release-please failed: ${err.message}`)
+    core.setFailed(`release-please failed: ${err.message}; cause: ${err.cause}`)
   })
 }
